@@ -20,6 +20,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <VideoView
+            android:id="@+id/signup_video_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
@@ -27,7 +33,7 @@
             android:layout_marginTop="60dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:text="Registrati"
+            android:text="@string/signup_yourself"
             android:textSize="20sp" />
 
         <Space
@@ -40,23 +46,24 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/button"
+                android:id="@+id/back_to_login_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
+                android:layout_gravity="start"
                 android:background="@color/colorPrimary"
+                android:contentDescription="@string/back"
                 android:padding="10dp"
                 android:src="@drawable/ic_arrow_back_white_24dp"
                 app:iconPadding="0dp" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/name_register_textinput_layout"
+                android:id="@+id/name_signup_textinput_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/name_register"
+                    android:id="@+id/name_signup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#00FFFFFF"
@@ -67,14 +74,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/lastname_register_textinput_layout"
+                android:id="@+id/lastname_signup_textinput_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
             >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/lastname_register"
+                    android:id="@+id/lastname_signup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#00FFFFFF"
@@ -84,14 +91,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/email_register_textinput_layout"
+                android:id="@+id/email_signup_textinput_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/email_register"
+                    android:id="@+id/email_signup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#00FFFFFF"
@@ -106,14 +113,14 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/birthdate_register_textinput_layout"
+                android:id="@+id/birthdate_signup_textinput_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 app:helperText="gg/mm/aaaa">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/birthdate_register"
+                    android:id="@+id/birthdate_signup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#00FFFFFF"
@@ -125,14 +132,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/password_register_textinput_layout"
+                android:id="@+id/password_signup_textinput_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 app:helperText="Almeno 8 caratteri">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/password_register"
+                    android:id="@+id/password_signup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#00FFFFFF"
@@ -143,17 +150,17 @@
                     />
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/password_confirm_register_textinput_layout"
+                android:id="@+id/password_confirm_signup_textinput_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/password_confirm_register"
+                    android:id="@+id/password_confirm_signup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#00FFFFFF"
-                    android:hint="Ripeti password"
+                    android:hint="@string/repeat_password"
                     android:inputType="textPassword"
                     android:maxLines="1"
 
@@ -167,10 +174,10 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button_login2"
+                    android:id="@+id/signup_button"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Registrati" />
+                    android:text="@string/signup_yourself" />
             </LinearLayout>
 
         </LinearLayout>

@@ -9,4 +9,7 @@
     <string name="name">Nome</string>
     <string name="lastname">Cognome</string>
     <string name="birthdate">Data di nascita</string>
+    <string name="signup_yourself">Registrati</string>
+    <string name="repeat_password">Ripeti password</string>
+    <string name="back">Indietro</string>
 </resources>

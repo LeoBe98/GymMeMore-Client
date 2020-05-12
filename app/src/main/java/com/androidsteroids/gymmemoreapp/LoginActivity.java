@@ -104,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-    public void login() throws IOException {
+    private void login() throws IOException {
 
         Log.d(TAG, "Login");
 
