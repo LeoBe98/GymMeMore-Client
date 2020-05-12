@@ -162,7 +162,7 @@ public class LoginActivity extends AppCompatActivity {
 
             try {
 
-                url = new URL("http://192.168.0.3:8080/GymMeMoreServer_war/user/login?email=" + params[0] + "&password=" + params[1]);
+                url = new URL("http://10.0.2.2:8080/GymMeMoreServer_war/user/login?email=" + params[0] + "&password=" + params[1]);
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
                 urlConnection.setConnectTimeout(5000);

@@ -24,41 +24,46 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="60dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="Registrati"
             android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginStart="10dp"
-            app:icon="@drawable/ic_arrow_back_white_24dp"
-            app:iconPadding="0dp" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
         <LinearLayout
             android:layout_width="340dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <ImageButton
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:background="@color/colorPrimary"
+                android:padding="10dp"
+                android:src="@drawable/ic_arrow_back_white_24dp"
+                app:iconPadding="0dp" />
+
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/outlinedTextField"
+                android:id="@+id/name_register_textinput_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/name"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+                android:layout_margin="4dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/name_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ellipsize="start"
-                    android:hint="dssfsf"
-                    android:inputType="textPersonName"
-                    android:text="cmon" />
-
+                    android:background="#00FFFFFF"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:hint="@string/name"
+                    />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -66,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:hint="@string/lastname">
+            >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/lastname_register"
@@ -74,7 +79,8 @@
                     android:layout_height="wrap_content"
                     android:background="#00FFFFFF"
                     android:inputType="text"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:hint="@string/lastname"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -82,7 +88,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:hint="@string/email"
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -92,25 +97,81 @@
                     android:background="#00FFFFFF"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
+                    android:hint="@string/email"
+
                     />
             </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/birthdate_register_textinput_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:hint="@string/birthdate">
+                app:helperText="gg/mm/aaaa">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/birthdate_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#00FFFFFF"
-                    android:hint="gg/mm/aaaa"
+                    android:hint="@string/birthdate"
                     android:inputType="date"
                     android:maxLines="1"
+
                     />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/password_register_textinput_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                app:helperText="Almeno 8 caratteri">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#00FFFFFF"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/password_confirm_register_textinput_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password_confirm_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#00FFFFFF"
+                    android:hint="Ripeti password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_login2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Registrati" />
+            </LinearLayout>
 
         </LinearLayout>
 
