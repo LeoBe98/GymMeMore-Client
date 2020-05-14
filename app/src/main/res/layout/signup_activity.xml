@@ -136,7 +136,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                app:helperText="Almeno 8 caratteri">
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/password_signup"
