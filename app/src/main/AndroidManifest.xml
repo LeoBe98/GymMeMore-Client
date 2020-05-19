@@ -34,6 +34,10 @@
 
         </activity>
 
+        <activity android:name=".SignupActivity2">
+
+        </activity>
+
         <activity android:name=".NoNetworkActivity">
 
         </activity>

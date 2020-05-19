@@ -12,4 +12,14 @@
     <string name="signup_yourself">Registrati</string>
     <string name="repeat_password">Ripeti password</string>
     <string name="back">Indietro</string>
+    <string name="next">Avanti</string>
+    <string name="choose_user_type">Che tipo di utente sei?</string>
+    <string name="gym_user">Utente palestra</string>
+    <string name="gym_trainer">Personal trainer</string>
+    <string name="nutritionist">Nutrizionista</string>
+    <string name="gym_owner">Proprietario</string>
+    <string name="gym_user_description">Se utilizzi la palestra per esercitarti.</string>
+    <string name="gym_trainer_description">Se sei un professionista dell\'esercizio fisico.</string>
+    <string name="nutritionist_description">Se sei un professionista dell\'alimentazione.</string>
+    <string name="gym_owner_description">Se possiedi una palestra.</string>
 </resources>
