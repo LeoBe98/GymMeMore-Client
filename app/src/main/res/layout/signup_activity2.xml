@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-   @Value:	#ff9a2e <LinearLayout
+    @Value: #ff9a2e
+
+    <LinearLayout
         android:layout_width="409dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
@@ -20,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    <Space
+        <Space
             android:layout_width="match_parent"
             android:layout_height="50dp" />
 
@@ -34,6 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
 
                 <ImageButton
                     android:id="@+id/back_to_signup1_button"
@@ -108,6 +110,14 @@
                     android:text="@string/gym_user_description"
                     android:textSize="16sp" />
 
+                <ProgressBar
+                    android:id="@+id/progress_bar_gym_user"
+                    style="@style/AppTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+                </ProgressBar>
+
                 <Button
                     android:id="@+id/signup_button_gym_user"
                     android:layout_width="wrap_content"
@@ -161,6 +171,14 @@
                     android:text="@string/gym_trainer_description"
                     android:textSize="16sp" />
 
+                <ProgressBar
+                    android:id="@+id/progress_bar_gym_trainer"
+                    style="@style/AppTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+                </ProgressBar>
+
                 <Button
                     android:id="@+id/signup_button_gym_trainer"
                     android:layout_width="wrap_content"
@@ -213,6 +231,14 @@
                     android:text="@string/nutritionist_description"
                     android:textSize="16sp" />
 
+                <ProgressBar
+                    android:id="@+id/progress_bar_gym_nutritionist"
+                    style="@style/AppTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+                </ProgressBar>
+
                 <Button
                     android:id="@+id/signup_button_gym_nutritionist"
                     android:layout_width="wrap_content"
@@ -264,6 +290,14 @@
                     android:layout_marginBottom="8dp"
                     android:text="@string/gym_owner_description"
                     android:textSize="16sp" />
+
+                <ProgressBar
+                    android:id="@+id/progress_bar_gym_owner"
+                    style="@style/AppTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+                </ProgressBar>
 
                 <Button
                     android:id="@+id/signup_button_gym_owner"

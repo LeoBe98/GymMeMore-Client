@@ -28,6 +28,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -35,6 +36,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -48,7 +50,6 @@ public class LoginActivity extends AppCompatActivity {
     private DBManagerUser dbManagerUser = null;
 
     private CursorAdapter adapter;
-
 
 
     @BindView(R.id.email_login_textinput_layout)
@@ -80,50 +81,46 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         _signup_link.setOnClickListener(new View.OnClickListener() {
-                     @Override
-                     public void onClick(View v) {
-                         Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
-                         startActivityForResult(intent, REQUEST_SIGNUP);
-                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
+                startActivityForResult(intent, REQUEST_SIGNUP);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
-                     }
-                 });
+            }
+        });
 
 
         _loginButton.setOnClickListener(new View.OnClickListener() {
-                     @Override
-                     public void onClick(View v) {
-                         try {
-                             login();
-                         } catch (IOException e) {
-                             e.printStackTrace();
-                         }
-                     }
-                 });
-             }
-
-
-
+            @Override
+            public void onClick(View v) {
+                try {
+                    login();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 
 
     private void login() throws IOException {
 
         Log.d(TAG, "Login");
 
-        if(_emailText.getText().toString().isEmpty() || _passwordText.getText().toString().isEmpty()) {
+        if (_emailText.getText().toString().isEmpty() || _passwordText.getText().toString().isEmpty()) {
 
-            if(_emailText.getText().toString().isEmpty()){
+            if (_emailText.getText().toString().isEmpty()) {
                 _emailTextinputLayout.setDefaultHintTextColor(ColorStateList.valueOf(Color.parseColor("#fa8282")));
                 _emailTextinputLayout.setHint("Inserisci l'email!");
                 _emailTextinputLayout.setHintTextColor(ColorStateList.valueOf(Color.parseColor("#fa8282")));
 
             }
 
-            if(_passwordText.getText().toString().isEmpty()){
+            if (_passwordText.getText().toString().isEmpty()) {
                 _passwordLoginTextinput_layout.setDefaultHintTextColor(ColorStateList.valueOf(Color.parseColor("#fa8282")));
                 _passwordLoginTextinput_layout.setHint("Inserisci la password!");
                 _passwordLoginTextinput_layout.setHintTextColor(ColorStateList.valueOf(Color.parseColor("#fa8282")));
-
 
 
             }
@@ -137,9 +134,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    private class Connection extends AsyncTask <String, String, JsonObject> {
+    private class Connection extends AsyncTask<String, String, JsonObject> {
 
         String toastMessage = null;
+
         @Override
         protected void onPreExecute() {
 
@@ -153,18 +151,15 @@ public class LoginActivity extends AppCompatActivity {
         }
 
 
-
-
-
         @Override
         protected JsonObject doInBackground(String... params) {
             URL url;
             HttpURLConnection urlConnection = null;
-            JsonObject user =null;
+            JsonObject user = null;
 
             try {
 
-                url = new URL("http://10.0.2.2:8080/GymMeMoreServer_war/user/login?email=" + params[0] + "&password=" + params[1]);
+                url = new URL("http://10.0.2.2:9869/GymMeMoreServer_war/user/login?email=" + params[0] + "&password=" + params[1]);
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
                 urlConnection.setConnectTimeout(5000);
@@ -181,35 +176,35 @@ public class LoginActivity extends AppCompatActivity {
 
                     int type = user.get("type").getAsInt();
                     int id = user.get("id").getAsInt();
-                    String name =  user.get("name").getAsString();
+                    String name = user.get("name").getAsString();
                     String lastname = user.get("lastName").getAsString();
                     String email = user.get("email").getAsString();
                     String birthdate = user.get("birthDate").getAsString();
 
                     dbManagerStatus.update(1);
-                    Log.e("Status","Status updated to logged");
+                    Log.e("Status", "Status updated to logged");
 
-                    dbManagerUser.insert(id, name, lastname, email,birthdate,type);
-                    Log.e("User","User updated");
+                    dbManagerUser.insert(id, name, lastname, email, birthdate, type);
+                    Log.e("User", "User updated");
 
                     dbManagerStatus.close();
                     dbManagerUser.close();
 
-                    if(type==0){
+                    if (type == 0) {
                         Intent i = new Intent(getApplicationContext(), UserHomeActivity.class);
                         startActivity(i);
                         finish();
-                    } else if(type==1){
+                    } else if (type == 1) {
 
                         //Trainer
 
-                    } else if(type==2){
-
-                        //Proprietario palestra
-
-                    } else if(type==3){
+                    } else if (type == 2) {
 
                         //Nutrizionista
+
+                    } else if (type == 3) {
+
+                        //Proprietario palestra
 
                     }
 
@@ -217,15 +212,15 @@ public class LoginActivity extends AppCompatActivity {
                 } else if (responseCode == HttpURLConnection.HTTP_NOT_FOUND) {
 
                     Log.e("Server response", "User not found!");
-                    toastMessage="Utente non trovato!";
+                    toastMessage = "Utente non trovato!";
                 } else if (responseCode == HttpURLConnection.HTTP_UNAUTHORIZED) {
                     Log.e("Server response", "Wrong password!");
-                    toastMessage="Password errata!";
+                    toastMessage = "Password errata!";
                 }
 
             } catch (IOException e) {
                 e.printStackTrace();
-                toastMessage="Impossibile connettersi!";
+                toastMessage = "Impossibile connettersi!";
             } finally {
                 if (urlConnection != null)
                     urlConnection.disconnect();
@@ -243,48 +238,47 @@ public class LoginActivity extends AppCompatActivity {
 
             _loginButton.setEnabled(true);
             Toast responseToast = Toast.makeText(getApplicationContext(), toastMessage, Toast.LENGTH_LONG);
-            if(user==null)
-                 responseToast.show();
+            if (user == null)
+                responseToast.show();
         }
     }
 
 
-
     private String readStream(InputStream in) throws UnsupportedEncodingException {
 
-            BufferedReader reader = null;
-            StringBuffer response = new StringBuffer();
+        BufferedReader reader = null;
+        StringBuffer response = new StringBuffer();
 
-            try{
+        try {
 
-                reader= new BufferedReader(new InputStreamReader(in));
-                String line ="";
-                while ((line =  reader.readLine())!=null){
-                    response.append(line);
-                }
-
-            } catch (IOException e){
-
-                e.printStackTrace();
-
-            } finally {
-
-                if(reader!=null){
-
-
-                 try{
-
-                     reader.close();
-
-                 } catch (IOException e){
-                     e.printStackTrace();
-                 }
-
-                }
+            reader = new BufferedReader(new InputStreamReader(in));
+            String line = "";
+            while ((line = reader.readLine()) != null) {
+                response.append(line);
             }
 
-            return response.toString();
+        } catch (IOException e) {
 
+            e.printStackTrace();
+
+        } finally {
+
+            if (reader != null) {
+
+
+                try {
+
+                    reader.close();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
         }
+
+        return response.toString();
+
+    }
 
 }

@@ -96,6 +96,7 @@ public class SignupActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+                finish();
             }
 
         });
@@ -103,14 +104,19 @@ public class SignupActivity extends AppCompatActivity {
     }
 
 
-    private void validate(){
+    private void validate() {
 
-        Log.d(TAG,"Validating");
+        Log.d(TAG, "Validating");
 
-        if(_nameText.getText().toString().isEmpty()){
+        if (_nameText.getText().toString().isEmpty()) {
             _nameTextInputLayout.setHintTextColor(ColorStateList.valueOf(Color.parseColor("#fa8282")));
             _nameTextInputLayout.setHint("Inserisci il tuo nome!");
-        } else {
+        } else if (!validateName(_nameText.getText().toString())&& !_nameText.getText().toString().isEmpty()){
+
+            _nameTextInputLayout.setHintTextColor(ColorStateList.valueOf(Color.parseColor("#fa8282")));
+            _nameTextInputLayout.setHint("Inserisci un nome valido!");
+
+    }else {
             _nameTextInputLayout.setHintTextColor(_nameTextInputLayout.getDefaultHintTextColor());
             _nameTextInputLayout.setHint("Nome");
             name = _nameText.getText().toString();
@@ -120,6 +126,11 @@ public class SignupActivity extends AppCompatActivity {
         if(_lastameText.getText().toString().isEmpty()){
             _lastnameTextInputLayout.setHint("Inserisci il tuo cognome!");
             _lastnameTextInputLayout.setHintTextColor(ColorStateList.valueOf(Color.parseColor("#fa8282")));
+        } else if (!validateName(_lastameText.getText().toString())&& !_lastameText.getText().toString().isEmpty()){
+
+            _lastnameTextInputLayout.setHintTextColor(ColorStateList.valueOf(Color.parseColor("#fa8282")));
+            _lastnameTextInputLayout.setHint("Inserisci un nome valido!");
+
         } else {
             _lastnameTextInputLayout.setHintTextColor(_birthDateTextInputLayout.getDefaultHintTextColor());
             _lastnameTextInputLayout.setHint("Cognome");
@@ -210,14 +221,12 @@ public class SignupActivity extends AppCompatActivity {
             startActivity(intent);
 
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        }
-
-
 
         }
 
 
 
+        }
 
     private void checkNetwork(){
         ConnectivityManager connectivityManager
@@ -256,6 +265,14 @@ public class SignupActivity extends AppCompatActivity {
         checkNumber = (Integer.valueOf(t[0]) <= 31 && Integer.valueOf(t[1]) <= 12 && Integer.valueOf(t[2]) >= 1900 && Integer.valueOf(t[2]) <= 2100);
 
         return (checkNumber && checkFormat);
+    }
+
+    private boolean validateName (String name){
+
+        String regex = "^[A-Za-z]+$";
+        return name.matches(regex);
+
+
     }
 
 }
